@@ -1,9 +1,10 @@
 <template>
 <div class="card-mayor">
-  <div class="card-contenedor">
+  <div class="card-contenedor" id="contenedor">
       <div class="card1">
          <div class="usuario">
              <span>{{nombre}}</span>
+              
          </div>
          <div class="N-orden">
              <span>N-orden</span>
@@ -18,8 +19,8 @@
         </div>
     </div>
     <div class="card3">
-      <button :class="{colores}">proseso</button>
-      <button @click="cambiar">finalizado</button>
+      <button  @click="color1">proseso</button>
+      <button @click="color2">finalizado</button>
     </div>
   </div>
 </div>     
@@ -50,23 +51,35 @@ export default {
         })
         .catche(e => console.log(e));
     },
-    cambiar: function() {
-      let cambiar = document.querySelector("card-contenedor");
+    color1() {
+      let btn1 = document.getElementById("contenedor");
+      
 
-      cambiar.addEventListener(e => {
-        cambiar.style.backgroundcolor = "quamarine";
+      btn1.addEventListener("click", e => {
+        btn1.style.backgroundColor = "gold";
+        btn1.style.transition = "1s";
+        btn1.style.color= "#2c3e50"
       });
+      
+    },
+    color2(){
+      let btn2 = document.getElementById("contenedor");
+      btn2.addEventListener("click", e => {
+          btn2.style.backgroundColor = "rgb(37, 204, 22)"
+          btn2.style.transition = "1s"
+          btn2.style.color = "white"
+      });
+    },
+    actualizarhora(){
+      
     }
+
   }
 };
 
 // setInterval(clock.actualizartiempo, 1000);
 </script>
 <style>
-.colores {
-  background-color: aquamarine;
-}
-
 .card-mayor {
   width: auto;
   height: 50%;
@@ -89,7 +102,6 @@ export default {
 .card1 {
   width: 100%;
   height: 125px;
-  /* background-color: blue; */
   display: flex;
   border-bottom: 1px solid rgb(163, 155, 155);
 }
@@ -108,7 +120,7 @@ export default {
 .N-orden {
   width: 32%;
   height: 125px;
-  /* background-color: rgb(163, 154, 168); */
+  /* background-color: rgb(37, 204, 22); */
   display: flex;
   justify-content: center;
   align-items: center;
