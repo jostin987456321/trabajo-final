@@ -4,11 +4,9 @@
       <div class="card1">
          <div class="usuario">
              <span>{{nombre}}</span>
-             <span>{{hora}}</span>
-             <span>{{fecha}}</span>
          </div>
          <div class="N-orden">
-             <span>N-orden {{numero}}</span>
+             <span>N-orden</span>
          </div> 
     </div>
     <div class="card2">
@@ -20,8 +18,8 @@
         </div>
     </div>
     <div class="card3">
-      <button>proseso</button>
-      <button>finalizado</button>
+      <button :class="{colores}">proseso</button>
+      <button @click="cambiar">finalizado</button>
     </div>
   </div>
 </div>     
@@ -33,12 +31,13 @@ export default {
   data() {
     return {
       todos: [],
-      hora: "18:23 pm",
-      fecha: "2/12/2019",
-      numero: "0",
-      nombre: "jostin moran estrada"
+      hora: 0,
+      minutos: 0,
+      segundos: 0,
+      nombre: "jostin"
     };
   },
+  // <----------lista de array---------------->
   mounted() {
     this.getTodos();
   },
@@ -50,11 +49,24 @@ export default {
           this.todos = response.data;
         })
         .catche(e => console.log(e));
+    },
+    cambiar: function() {
+      let cambiar = document.querySelector("card-contenedor");
+
+      cambiar.addEventListener(e => {
+        cambiar.style.backgroundcolor = "quamarine";
+      });
     }
   }
 };
+
+// setInterval(clock.actualizartiempo, 1000);
 </script>
 <style>
+.colores {
+  background-color: aquamarine;
+}
+
 .card-mayor {
   width: auto;
   height: 50%;
@@ -70,8 +82,7 @@ export default {
   margin-bottom: 20px;
   margin: 10px;
   border-radius: 20px;
-  /* display: flex; */
-  /* background-color: aqua; */
+
   border: 3px solid rgb(179, 171, 171);
 }
 
@@ -99,8 +110,8 @@ export default {
   height: 125px;
   /* background-color: rgb(163, 154, 168); */
   display: flex;
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 /* <---------segunda card-----------> */
 
@@ -172,14 +183,14 @@ p {
   .card1 {
     width: 100%;
     height: 125px;
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
   }
 
   .usuario {
     width: 69%;
     height: 125px;
-    background-color: gold;
+    /* background-color: gold; */
     display: flex;
     /* border-top: 1px solid black; */
     flex-direction: column;
@@ -199,7 +210,7 @@ p {
   .N-orden {
     width: 32%;
     height: 125px;
-    background-color: rgb(163, 154, 168);
+    /* background-color: rgb(163, 154, 168); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -209,12 +220,12 @@ p {
   .card2 {
     width: 100%;
     height: 100%;
-    background-color: rgb(53, 162, 224);
+    /* background-color: rgb(53, 162, 224); */
     /* display: flex; */
   }
 
   .card3 {
-    width: 102%;
+    width: 100%;
     height: 70px;
     /* background-color: aqua; */
     display: flex;
@@ -224,7 +235,7 @@ p {
   .pedidos {
     width: 345px;
     height: 50px;
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
     display: flex;
   }
 
@@ -233,7 +244,7 @@ p {
     height: 50px;
     /* display: inline; */
     /* height: 100%; */
-    background-color: rgb(219, 46, 46);
+    /* background-color: rgb(219, 46, 46); */
   }
 
   h6 {
@@ -245,7 +256,7 @@ p {
   }
 
   p {
-    color: white;
+    color: rgb(2, 2, 2);
     text-align: center;
   }
 }
